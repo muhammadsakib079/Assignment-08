@@ -1,0 +1,21 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@import url('https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+
+:root{
+    --button-background:#0EA106;
+}
+
+.mulish {
+    font-family: "Mulish", sans-serif;
+}
+
+.plus-jakarta{
+    font-family: "Plus Jakarta Sans", sans-serif;
+}
+
+/* Nav Bar */
+.contact{
+    @apply btn btn-lg bg-[var(--button-background)] text-white px-8 py-6 font-medium rounded-full tracking-wider
+}
