@@ -11,6 +11,7 @@ import Contact from './pages/Contact.jsx';
 import Booking from './pages/Booking.jsx' 
 import LawyerProfile from './pages/LawyerProfile/LawyerProfile.jsx';
 
+
 const router = createBrowserRouter([
   {
     path: '/',
