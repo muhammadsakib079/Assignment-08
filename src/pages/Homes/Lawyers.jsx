@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import '../../index.css'
 import lawyers from '../../data/lawyer.json';
 
 
@@ -67,7 +67,7 @@ const Lawyers = () => {
             <div className="flex justify-center mt-10">
                 <button
                     onClick={() => setShowAll(!showAll)}
-                    className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full text-sm font-medium"
+                    className="show"
                 >
                     {showAll ? 'Show Less' : 'Show All Lawyer'}
                 </button>
