@@ -9,7 +9,7 @@ import Home from './pages/Home.jsx';
 import Blogs from './pages/Blogs.jsx';
 import Contact from './pages/Contact.jsx';
 import Booking from './pages/Booking.jsx' 
-
+import LawyerProfile from './pages/LawyerProfile/LawyerProfile.jsx';
 
 const router = createBrowserRouter([
   {
@@ -20,6 +20,7 @@ const router = createBrowserRouter([
       { path: '/blogs', element: <Blogs /> },
       { path: '/contact', element: <Contact /> },
       { path: '/bookings', element: <Booking /> }, 
+      { path: '/lawyer/:id', element: <LawyerProfile /> },
     ],
   },
 ]);
