@@ -1,4 +1,4 @@
-import { useLocation } from 'react-router-dom'; // Import useLocation hook
+import { useLocation } from 'react-router-dom'; 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import { Outlet } from 'react-router-dom';
@@ -10,7 +10,7 @@ import { ToastContainer } from 'react-toastify';
 export default function App() {
   const location = useLocation();
 
-  // Check if the current route is the 404 page by checking for wildcard matching
+  
   
 
   return (

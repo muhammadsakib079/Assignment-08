@@ -1,4 +1,4 @@
-// src/pages/NotFound.jsx
+// Completed NotFound
 import Navbar from '../components/Navbar';
 import React from 'react';
 import { Link } from 'react-router-dom';

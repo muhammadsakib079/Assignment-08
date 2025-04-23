@@ -1,3 +1,4 @@
+// Completed Home
 import React from 'react'
 import Hero from './Homes/Hero'
 import Lawyers from './Homes/Lawyers'
