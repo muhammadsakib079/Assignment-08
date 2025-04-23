@@ -1,13 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import {
-  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid
-} from 'recharts';
+import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import lawyersData from '../data/lawyer.json';
+import { Link } from 'react-router';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Link } from 'react-router';
-import { MdErrorOutline } from 'react-icons/md';
-
 
 function Booking() {
   const [bookings, setBookings] = useState([]);
@@ -42,10 +38,9 @@ function Booking() {
       localStorage.setItem("bookings", JSON.stringify(updatedStored));
 
       toast.error(
-        <div className="toast-error-custom">
-          <MdErrorOutline size={20} />
-          Item removed from favorites!
-        </div>,
+        <span className="text-red-600">
+          Appointment with <strong>{name}</strong> cancelled.
+        </span>,
         {
           icon: false,
           autoClose: 3000,

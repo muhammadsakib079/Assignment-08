@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function Profilefooter({ lawyer }) {
 
+function Profilefooter({ lawyer }) {
   const navigate = useNavigate();
   const today = new Date().toLocaleDateString('en-US', { weekday: 'long' });
   const isAvailable = lawyer.availability.includes(today);
@@ -15,7 +15,11 @@ function Profilefooter({ lawyer }) {
       
       // Check for duplicate booking
       if (stored.includes(lawyer.id)) {
-        toast.error(`You already have an appointment with ${lawyer.name}`);
+        toast.error(
+          <span className="flex items-center gap-2">
+            You already have an appointment with {lawyer.name}
+          </span>
+        );
         return;
       }
       
@@ -23,7 +27,12 @@ function Profilefooter({ lawyer }) {
       const updated = [...stored, lawyer.id];
       localStorage.setItem("bookings", JSON.stringify(updated));
       
-      toast.success(`Appointment booked with ${lawyer.name}`);
+      toast.success(
+        <span className="flex items-center gap-2">
+          Appointment booked with {lawyer.name}
+        </span>
+      );
+
       navigate('/bookings');
     } catch (error) {
       toast.error("Failed to book appointment");
@@ -32,11 +41,8 @@ function Profilefooter({ lawyer }) {
   };
 
   return (
-
     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
-      
       <h3 className="text-xl text-center font-bold mb-4">Book an Appointment</h3>
-
       <div className="flex flex-col md:flex-row justify-between items-center p-4 mb-6 border-t border-dashed ">
         <h4 className="font-bold text-xl mb-2 md:mb-0">Availability</h4>
         <div className={`text-center text-md font-semibold px-4 py-2 rounded-full ${
@@ -47,13 +53,11 @@ function Profilefooter({ lawyer }) {
           {isAvailable ? 'Available Today' : `Not Available on ${today}`}
         </div>
       </div>
-
       <div className='border-t relative bottom-6 '> 
-      <p className="mb-6 text-yellow-600 mt-6 bg-yellow-100 border border-yellow-400 text-md font-semibold px-4 py-2 rounded-full">
-        Due to high demand, we recommend booking appointments in advance.
-      </p>
+        <p className="mb-6 text-yellow-600 mt-6 bg-yellow-100 border border-yellow-400 text-md font-semibold px-4 py-2 rounded-full">
+          Due to high demand, we recommend booking appointments in advance.
+        </p>
       </div>
-
       <button
         onClick={handleBooking}
         disabled={!isAvailable}

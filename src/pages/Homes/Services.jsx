@@ -19,7 +19,7 @@ const Services = () => {
             staff: 300
         };
 
-        const animationDuration = 2000;
+        const animationDuration = 5000;
         const startTime = Date.now();
 
         const updateCounts = () => {

@@ -1,3 +1,4 @@
+// Completed Lawyer Profile
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import lawyers from '../../data/lawyer.json';
