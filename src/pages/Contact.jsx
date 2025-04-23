@@ -1,56 +1,31 @@
+// Completed Contact
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const ContactNotFound = () => {
+export default function Example() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-green-50 to-gray-50 flex flex-col items-center justify-center p-4 text-center">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-md overflow-hidden">
-        {/* Header */}
-        <div className="bg-green-700 p-4 text-white">
-          <h1 className="text-2xl font-bold">404 - Contact Not Found</h1>
-        </div>
-        
-        {/* Content */}
-        <div className="p-6">
-          <div className="mb-6">
-            <div className="text-6xl mb-4">⚠️</div>
-            <h2 className="text-xl font-semibold text-gray-800 mb-3">
-              Oops! Page Not Found
-            </h2>
-            
-            <p className="text-gray-600 mb-6">
-              The contact page you're looking for doesn't exist. Let's get you back on track.
-            </p>
-          </div>
-          
-          <div className="flex flex-col gap-3">
-            <Link
-              to="/"
-              className="bg-green-600 hover:bg-green-700 text-white font-medium py-2 px-4 rounded-lg transition-colors"
-            >
-              Return to Home
-            </Link>
-            
-            <Link
-              to="/contact"
-              className="bg-white border border-green-600 text-green-600 hover:bg-green-50 font-medium py-2 px-4 rounded-lg transition-colors"
-            >
-              Try Contact Again
-            </Link>
-          </div>
-        </div>
-        
-        {/* Footer */}
-        <div className="bg-gray-100 px-4 py-3 text-center text-gray-600 text-sm">
-          <p>
-            Need help? Email <a href="mailto:help@law.cf" className="text-green-600">help@law.cf</a>
-          </p>
+    <main className="grid min-h-full place-items-center bg-white px-6 py-24">
+      <div className="text-center">
+
+        <p className="text-7xl font-semibold text-[var(--button-background)]">404</p>
+
+        <h1 className="mt-4 font-semibold tracking-tight text-balance text-gray-900 text-7xl">
+          Page not found
+        </h1>
+
+        <p className="mt-6 font-medium text-pretty text-gray-500 text-xl/8">
+          Sorry, we couldn’t find the page you’re looking for.
+        </p>
+
+        <div className="mt-10 flex items-center justify-center gap-x-6">
+          <Link
+            to="/"
+            className="rounded-md bg-[var(--button-background)] px-3.5 py-2.5 text-lg font-semibold text-white shadow-xs hover:bg-green-700 "
+          >
+            Go back home
+          </Link>
         </div>
       </div>
-      
-      
-    </div>
+    </main>
   );
-};
-
-export default ContactNotFound;
+}

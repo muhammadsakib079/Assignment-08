@@ -59,7 +59,7 @@ function Profilefooter({ lawyer }) {
         disabled={!isAvailable}
         className={`w-full text-lg py-4 font-medium rounded-full ${
           isAvailable
-            ? 'bg-blue-600 hover:bg-blue-700 text-white'
+            ? 'bg-[var(--button-background)] hover:bg-green-700 text-white'
             : 'bg-gray-300 text-gray-500 cursor-not-allowed'
         }`}
       >

@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import {
-  AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid
+  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid
 } from 'recharts';
 import lawyersData from '../data/lawyer.json';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router';
+import { MdErrorOutline } from 'react-icons/md';
+
 
 function Booking() {
   const [bookings, setBookings] = useState([]);
@@ -37,26 +40,29 @@ function Booking() {
       const stored = JSON.parse(localStorage.getItem("bookings")) || [];
       const updatedStored = stored.filter(storedId => storedId !== id);
       localStorage.setItem("bookings", JSON.stringify(updatedStored));
-      
-      toast.success(`Appointment with ${name} cancelled`);
+
+      toast.error(
+        <div className="toast-error-custom">
+          <MdErrorOutline size={20} />
+          Item removed from favorites!
+        </div>,
+        {
+          icon: false,
+          autoClose: 3000,
+          closeButton: false,
+          hideProgressBar: false,
+        }
+      );
     } catch (error) {
       toast.error("Failed to cancel appointment");
       console.error("Cancellation error:", error);
     }
   };
 
-  const chartData = Object.values(
-    bookings.reduce((acc, cur) => {
-      acc[cur.speciality] = acc[cur.speciality] || { 
-        name: cur.speciality, 
-        fees: 0,
-        count: 0 
-      };
-      acc[cur.speciality].fees += cur.consultation_fee;
-      acc[cur.speciality].count += 1;
-      return acc;
-    }, {})
-  );
+  const chartData = bookings.map(lawyer => ({
+    name: lawyer.name,
+    fees: lawyer.consultation_fee,
+  }));
 
   if (loading) {
     return (
@@ -73,30 +79,33 @@ function Booking() {
           <h2 className="text-2xl font-bold text-center my-6">Appointments Overview</h2>
           <div className="bg-white p-4 rounded-lg shadow mb-8">
             <ResponsiveContainer width="100%" height={300}>
-              <AreaChart data={chartData}>
-                <CartesianGrid strokeDasharray="3 3" />
+              <BarChart
+                data={chartData}
+                margin={{ top: 10, right: 30, left: 0, bottom: 0 }}
+              >
+                <defs>
+                  <linearGradient id="colorFees" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#34d399" stopOpacity={0.8} />
+                    <stop offset="95%" stopColor="#34d399" stopOpacity={0.2} />
+                  </linearGradient>
+                </defs>
                 <XAxis dataKey="name" />
                 <YAxis />
-                <Tooltip 
-                  formatter={(value, name) => 
-                    name === 'fees' ? [`${value} Taka`, 'Total Fees'] : [value, 'Appointments']
-                  }
+                <CartesianGrid strokeDasharray="3 3" />
+                <Tooltip />
+                <Bar
+                  dataKey="fees"
+                  fill="url(#colorFees)"
+                  radius={[4, 4, 0, 0]} // Rounded top corners
                 />
-                <Area 
-                  type="monotone" 
-                  dataKey="fees" 
-                  name="Total Fees"
-                  stroke="#0ea5e9" 
-                  fill="#38bdf8" 
-                />
-              </AreaChart>
+              </BarChart>
             </ResponsiveContainer>
           </div>
         </>
       )}
 
-      <div className="bg-white p-4 md:p-6 rounded-lg shadow">
-        <h2 className="text-2xl font-bold text-center mb-6">My Appointments</h2>
+      <div className="bg-white py-8 my-12 shadow-lg border border-gray-300 rounded-lg">
+        <h2 className="text-3xl font-bold text-center mb-6">My Appointments</h2>
         <p className="text-center text-gray-500 mb-8">
           Our platform connects you with verified, experienced lawyers across various specialties.
         </p>
@@ -105,12 +114,14 @@ function Booking() {
           <div className="text-center py-12">
             <h3 className="text-xl font-semibold mb-2">No Appointments Booked</h3>
             <p className="text-gray-600 mb-4">You haven't booked any appointments yet.</p>
-            <a 
-              href="/" 
-              className="inline-block px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-            >
-              Find a Lawyer
-            </a>
+            <p>
+              <Link
+                to="/"
+                className="inline-block text-xl px-6 py-2 bg-[var(--button-background)] text-white rounded-lg hover:bg-green-700"
+              >
+                Find a Lawyer
+              </Link>
+            </p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -118,20 +129,20 @@ function Booking() {
               <div key={lawyer.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <img 
-                      src={lawyer.image} 
-                      alt={lawyer.name} 
+                    <img
+                      src={lawyer.image}
+                      alt={lawyer.name}
                       className="w-16 h-16 rounded-full object-cover"
                     />
                     <div>
                       <h3 className="text-lg font-semibold">{lawyer.name}</h3>
                       <p className="text-sm text-gray-500">{lawyer.speciality}</p>
-                      <p className="text-sm text-gray-600">{lawyer.experience}</p>
+                      <p className="text-sm text-gray-600">{lawyer.experience} Years Experience</p>
                     </div>
                   </div>
                   <div className="flex flex-col md:items-end">
                     <span className="font-medium text-gray-800">
-                      {lawyer.consultation_fee} Taka
+                      Appointment Fee : {lawyer.consultation_fee} Taka
                     </span>
                     <button
                       onClick={() => handleCancel(lawyer.id, lawyer.name)}
