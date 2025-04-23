@@ -53,7 +53,7 @@ const ServiceCard = ({ img, count, label }) => (
     <div className="p-6 bg-gray-50 rounded-lg shadow-lg ">
         <img src={img} alt={label} className="w-22" />
         <div className="text-4xl font-bold py-3">
-            <CountUp end={count} duration={3} />+
+            <CountUp end={count} duration={20} />+
         </div>
         <div className="text-xl font-medium text-gray-700">
             {label}

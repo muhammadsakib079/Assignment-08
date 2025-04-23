@@ -32,7 +32,7 @@ export default function Footer() {
                         <Link to="https://www.facebook.com/muhammadsakib079">
                             <img src="https://i.ibb.co.com/wFgTG0pB/facebook.png" alt="Facebook" />
                         </Link>
-                        <Link to="">
+                        <Link to="https://www.instagram.com/sakib__muhammad/">
                             <img src="https://i.ibb.co.com/fVv4h2Zr/social.png" alt="Instagram" />
                         </Link>
                         <Link to="https://www.linkedin.com/in/md-sakib-646645297/">

@@ -135,12 +135,12 @@ function Booking() {
                     />
                     <div>
                       <h3 className="text-lg font-semibold">{lawyer.name}</h3>
-                      <p className="text-sm text-gray-500">{lawyer.speciality}</p>
+                      <p className="text-sm text-gray-600">{lawyer.speciality}</p>
                       <p className="text-sm text-gray-600">{lawyer.experience} Years Experience</p>
                     </div>
                   </div>
                   <div className="flex flex-col md:items-end">
-                    <span className="font-medium text-gray-800">
+                    <span className="font-medium  text-gray-600">
                       Appointment Fee : {lawyer.consultation_fee} Taka
                     </span>
 
