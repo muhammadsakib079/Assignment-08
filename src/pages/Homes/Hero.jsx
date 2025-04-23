@@ -1,11 +1,11 @@
 // Completed Hero
 import React from 'react'
-
+import '../../index.css';
 function Hero() {
     return (
         <>
             <div
-                className="hero mt-15 min-h-[63vh] bg-top rounded-4xl brightness-120 grayscale-25 "
+                className="hero mulish mt-15 min-h-[63vh] bg-top rounded-4xl brightness-120 grayscale-25 "
                 style={{
                     backgroundImage:
                         "url(https://i.ibb.co.com/nM2MsDNL/banner-img-1.png)",

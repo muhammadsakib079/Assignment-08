@@ -19,7 +19,7 @@ const Lawyers = () => {
     };
 
     return (
-        <div className="mx-auto px-4 py-12 ">
+        <div className="mx-auto px-4 py-12 mulish">
 
             <h2 className="text-4xl font-bold text-center mb-4">Our Best Lawyers</h2>
             <p className="text-center max-w-5xl mx-auto text-gray-600 mb-20">
@@ -43,23 +43,23 @@ const Lawyers = () => {
 
                         <div className="w-2/3">
                             <div className="flex gap-2 mb-4">
-                                <span className={`text-sm font-semibold px-3 py-1 rounded-full ${
+                                <span className={`text-[12px] font-semibold px-3 py-1 rounded-full ${
                                     isAvailableToday(lawyer.availability)
                                         ? 'bg-green-100 text-green-700'
                                         : 'bg-red-100 text-red-700'                                      
                                 }`}>
                                     {isAvailableToday(lawyer.availability) ? 'Available Today' : 'Not Available'}
                                 </span>
-                                <span className="bg-blue-100 text-blue-700 text-sm font-semibold px-3 py-1 rounded-full">
+                                <span className="bg-blue-100 text-blue-700 text-[12px] font-semibold px-3 py-1 rounded-full">
                                     {lawyer.experience} Years Experience
                                 </span>
                             </div>
 
 
                             <div className="mb-4">
-                                <h3 className="text-[22px] font-semibold">{lawyer.name}</h3>
-                                <p className="text-gray-600 py-1">{lawyer.speciality}</p>
-                                <p className="text-sm text-gray-500">
+                                <h3 className="text-xl font-semibold">{lawyer.name}</h3>
+                                <p className="text-gray-600 text-[14px] mb-2">{lawyer.speciality}</p>
+                                <p className="text-[14px] text-gray-500 border-t pt-2 border-dashed">
                                     Ⓡ License No : BD-{lawyer.license_number}
                                 </p>
                             </div>
@@ -67,7 +67,7 @@ const Lawyers = () => {
 
                             <div className="mt-4">
                                 <Link to={`/lawyer/${lawyer.id}`}>
-                                    <button className="text-lg btn btn-outline btn-primary w-full rounded-full py-2">View Details
+                                    <button className="text-[16px] btn btn-outline btn-primary w-full rounded-full py-2">View Details
                                     </button>
                                 </Link>
                             </div>
@@ -83,7 +83,7 @@ const Lawyers = () => {
                 <div className="flex justify-center mt-15">
                     <button
                         onClick={() => setShowAll(!showAll)}
-                        className="text-xl px-6 py-3 bg-[var(--button-background)] text-white rounded-full hover:bg-green-700 ">
+                        className="text-lg px-4 py-2 bg-[var(--button-background)] text-white rounded-full hover:bg-green-700 ">
                         {showAll ? 'Show Less' : 'Show All Lawyers'}
                     </button>
                 </div>

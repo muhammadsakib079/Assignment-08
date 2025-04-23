@@ -99,29 +99,33 @@ function Booking() {
         </>
       )}
 
-      <div className="bg-white py-8 my-12 shadow-lg border border-gray-300 rounded-lg">
+      <div className='mt-20'>
         <h2 className="text-3xl font-bold text-center mb-6">My Appointments</h2>
         <p className="text-center text-gray-500 mb-8">
-          Our platform connects you with verified, experienced lawyers across various specialties.
+          Our platform connects you with verified, experienced Lawyers across various specialties — all at your convenience.
         </p>
+      </div>
 
-        {bookings.length === 0 ? (
-          <div className="text-center py-12">
-            <h3 className="text-xl font-semibold mb-2">No Appointments Booked</h3>
-            <p className="text-gray-600 mb-4">You haven't booked any appointments yet.</p>
-            <p>
-              <Link
-                to="/"
-                className="inline-block text-xl px-6 py-2 bg-[var(--button-background)] text-white rounded-lg hover:bg-green-700"
-              >
-                Find a Lawyer
-              </Link>
-            </p>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {bookings.map(lawyer => (
-              <div key={lawyer.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition">
+
+
+      {bookings.length === 0 ? (
+        <div className="text-center py-12">
+          <h3 className="text-xl font-semibold mb-2">No Appointments Booked</h3>
+          <p className="text-gray-600 mb-4">You haven't booked any appointments yet.</p>
+          <p>
+            <Link
+              to="/"
+              className="inline-block text-xl px-6 py-2 bg-[var(--button-background)] text-white rounded-lg hover:bg-green-700"
+            >
+              Find a Lawyer
+            </Link>
+          </p>
+        </div>
+      ) : (
+        <div className="space-y-4 my-30">
+          {bookings.map(lawyer => (
+            <div key={lawyer.id} className="border border-gray-200 rounded-lg p-4 hover:shadow-md my-8">
+              <div>
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div className="flex items-center gap-4">
                     <img
@@ -139,21 +143,27 @@ function Booking() {
                     <span className="font-medium text-gray-800">
                       Appointment Fee : {lawyer.consultation_fee} Taka
                     </span>
-                    <button
+
+                  </div>
+                </div>
+                <div className='border-t border-dashed border-gray-400 mt-4 pt-2'>
+                <button
                       onClick={() => handleCancel(lawyer.id, lawyer.name)}
-                      className="mt-2 px-4 py-2 text-sm border border-red-400 text-red-600 font-semibold rounded-full hover:bg-red-50 transition"
+                      className="mt-2 w-full px-4 py-2 text-sm border border-red-400 text-red-600 font-semibold rounded-full hover:bg-red-50 "
                     >
                       Cancel Appointment
                     </button>
-                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        )}
-      </div>
+            </div>
+          ))}
+        </div>
+      )}
+
     </div>
   );
 }
 
 export default Booking;
+
+
